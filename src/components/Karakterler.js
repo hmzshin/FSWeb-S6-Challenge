@@ -11,28 +11,20 @@ const Karakterler = (props) => {
     display: flex;
     flex-direction: column;
   `;
-  console.log("karakterler", data);
-  const filteredData = data.filter((obje) =>
-    obje.name.toLowerCase().includes(input.toLowerCase())
-  );
 
-  if (!input) {
-    return (
-      <Header>
-        {data.map((obje, index) => (
-          <Karakter key={index} data={obje} />
-        ))}
-      </Header>
-    );
-  } else {
-    return (
-      <Header>
-        {filteredData.map((obje, index) => (
-          <Karakter key={index} data={obje} />
-        ))}
-      </Header>
-    );
-  }
+  const filteredData = !input
+    ? data
+    : data.filter((obje) =>
+        obje.name.toLowerCase().includes(input.toLowerCase())
+      );
+
+  return (
+    <Header>
+      {filteredData.map((obje, index) => (
+        <Karakter key={index} data={obje} />
+      ))}
+    </Header>
+  );
 };
 
 export default Karakterler;
