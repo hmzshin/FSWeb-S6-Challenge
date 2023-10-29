@@ -20,9 +20,9 @@ const Karakterler = (props) => {
 
   return (
     <Header>
-      {filteredData.map((obje, index) => (
-        <Karakter key={index} data={obje} />
-      ))}
+      {filteredData.map((obje, index) => {
+        return <Karakter key={index} data={obje} />;
+      })}
     </Header>
   );
 };

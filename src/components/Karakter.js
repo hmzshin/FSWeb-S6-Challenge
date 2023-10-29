@@ -20,8 +20,9 @@ const Karakter = (props) => {
     align-items: center;
     justify-content: space-between;
     border-radius: 10px;
-    background-color: #6c5b7b;
+    background-color: #fefae0;
     margin-bottom: 10px;
+    font-family: "Prompt", sans-serif;
   `;
   const Title = styled.h4`
     height: 100%;
@@ -37,10 +38,6 @@ const Karakter = (props) => {
     height: 100%;
   `;
 
-  // const PassiveContainer = styled.div`
-  //   display: none;
-  // `;
-
   const PassiveContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -52,6 +49,7 @@ const Karakter = (props) => {
   const ActiveContainer = styled(PassiveContainer)`
     visibility: visible;
     height: auto;
+    transition: 4s;
   `;
 
   const Info = styled.div`
@@ -61,12 +59,14 @@ const Karakter = (props) => {
     padding: 5px 0px;
     border-bottom: 2px solid;
     box-shadow: 10px;
+    font-family: "Prompt", sans-serif;
   `;
 
   const Text = styled.p`
     margin-left: 30px;
     width: 100px;
     text-align: left;
+    font-family: "Prompt", sans-serif;
   `;
 
   const Hide = styled.div`
@@ -80,12 +80,11 @@ const Karakter = (props) => {
   `;
   const Header = isShownP && isShown ? Show : Hide;
 
-  console.log("karakter", data);
   const ContentContainer = isShown ? ActiveContainer : PassiveContainer;
 
   return (
     <Container>
-      <Section onClick={() => (isShown ? setIsShown(false) : setIsShown(true))}>
+      <Section onClick={() => setIsShown(!isShown)}>
         <Title>{data.name}</Title>
         <ImageContainer>
           <Image src={isShown ? hide : show} />
@@ -128,9 +127,7 @@ const Karakter = (props) => {
             {data["skin_color"][0].toUpperCase() + data["skin_color"].slice(1)}
           </Text>
         </Info>
-        <Info
-          onClick={() => (isShownP ? setIsShownP(false) : setIsShownP(true))}
-        >
+        <Info onClick={() => setIsShownP(!isShownP)}>
           Appears in {data.films.length} films
         </Info>
         <Header>
