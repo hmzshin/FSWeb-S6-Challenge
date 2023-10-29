@@ -17,6 +17,7 @@ const App = () => {
   };
 
   const [data, setData] = useState(null);
+  const [input, setInput] = useState(null);
 
   useEffect(() => {
     fetchData();
@@ -25,7 +26,13 @@ const App = () => {
   return data ? (
     <div className="App">
       <h1 className="Header">Karakterler</h1>
-      <Karakterler data={data} />
+      <input
+        id="input"
+        type="text"
+        placeholder="Aramak istediğin karakteri yaz"
+        onChange={(e) => setInput(e.target.value)}
+      />
+      <Karakterler data={data} input={input} />
       <p></p>
     </div>
   ) : (

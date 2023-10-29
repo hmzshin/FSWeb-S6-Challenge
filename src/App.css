@@ -1,14 +1,23 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
 .Header {
   color: #443e3e;
   text-shadow: 1px 1px 5px #fff;
+  padding: 30px;
 }
 /* write your parent styles in here for your App.js */
 * {
-  border: 1px solid lime;
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
+}
+
+input {
+  width: 500px;
+  height: 1.5rem;
 }

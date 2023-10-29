@@ -3,7 +3,7 @@ import { useState } from "react";
 import Karakter from "./Karakter";
 
 const Karakterler = (props) => {
-  const { data } = props;
+  const { data, input } = props;
 
   const Header = styled.div`
     margin: auto;
@@ -12,13 +12,27 @@ const Karakterler = (props) => {
     flex-direction: column;
   `;
   console.log("karakterler", data);
-  return (
-    <Header>
-      {data.map((obje, index) => (
-        <Karakter key={index} data={obje} />
-      ))}
-    </Header>
+  const filteredData = data.filter((obje) =>
+    obje.name.toLowerCase().includes(input.toLowerCase())
   );
+
+  if (!input) {
+    return (
+      <Header>
+        {data.map((obje, index) => (
+          <Karakter key={index} data={obje} />
+        ))}
+      </Header>
+    );
+  } else {
+    return (
+      <Header>
+        {filteredData.map((obje, index) => (
+          <Karakter key={index} data={obje} />
+        ))}
+      </Header>
+    );
+  }
 };
 
 export default Karakterler;
